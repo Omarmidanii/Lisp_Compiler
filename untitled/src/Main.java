@@ -7,7 +7,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
 public class Main {
     public static void main(String[] args) {
-        String input = "(print Hello)";
+        String input = "(print * 3 2)";
 
         ANTLRInputStream inputStream = new ANTLRInputStream(input);
         LISPlexer lexer = new LISPlexer(inputStream);

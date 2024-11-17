@@ -121,9 +121,15 @@ operator1 : ADD
             | NOTLESSKEY
             | LESSKEY
             | LOGAND
-            | LOGOR
+            | LOGIOR
             | LOGXOR
+            | LOGNOR
+            | LOGEQV
             | LOGNOT
+            | INCF
+            | DECF
+            | MAX
+            | MIN
             ;
 
 operator2 : FLOOR
@@ -133,6 +139,7 @@ operator2 : FLOOR
             | ASH
             | LSH
             | SQRT
+            | SIN
             ;
 
 atom: NUMBER
