@@ -20,7 +20,6 @@ fragment P: [Pp];
 fragment Q: [Qq];
 fragment R: [Rr];
 fragment S: [Ss];
-fragment T: [Tt];
 fragment U: [Uu];
 fragment V: [Vv];
 fragment W: [Ww];
@@ -30,6 +29,7 @@ fragment Z: [Zz];
 
 
 // output & input
+T: [Tt];
 PRINT: P R I N T;
 PRINC: P R I N C;
 WRITE_LINE: W R I T E[-]L I N E;
@@ -45,7 +45,9 @@ CLOSE_B: ')';
 HASH:'#';
 SINGLE_QUOTE: '\'';
 FORMAT: F O R M A T;
-
+// omar
+DEFPARAMETER: D E F P A R A M E T E R;
+// end
 
 //string
 CHAR:'#\\' .;
@@ -145,6 +147,33 @@ TAN: T A N;
 ACOS: A C O S;
 ASIN: A S I N;
 ATAN: A T A N;
+SINH: S I N H;
+COSH: C O S H;
+TANH: T A N H;
+ACOSH: A C O S H;
+ASINH: A S I N H;
+ATANH: A T A N H;
+EXP: E X P;
+LOG: L O G;
+FLOAT: F L O A T;
+HASHC: '#'C;
+CONJUGATE: C O N J I G A T E;
+GCD: G C D;
+LCD: L C M;
+ISQRT: I SQRT;
+TRUNCATE: T R U N C A T E;
+ROUND: R O U N D;
+FFLOOR: F FLOOR;
+FCEILING: F CEILING;
+FTRUNCATE: F TRUNCATE;
+FROUND: F ROUND;
+RATIONAL: R A T I O N A L;
+RATIONALIZE: RATIONAL I Z E;
+DENOMINATOR: D I N O M I N A T O R;
+NUMERATOR: N U M E R A T O R;
+IMAGPART: I M A G P A R T;
+REALPART: R E A L P A R T;
+COMPLEX: C O M P L E X;
 // end
 NIL: N I L;
 LET: L E T;

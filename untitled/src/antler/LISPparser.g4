@@ -2,7 +2,7 @@ parser grammar LISPparser;
 
 options {tokenVocab=LISPlexer;}
 
-program: ((OPEN_B* (expr)* CLOSE_B*) | comment EOF)
+program: ((OPEN_B* (expr)* CLOSE_B*) | comment) EOF
         ;
 
 compair:EQUALKEY
@@ -17,7 +17,8 @@ compair:EQUALKEY
 
 exprString: STRINGKEY compair STRING STRING ;
 
-expr : OPEN_B* (print
+expr : balancedExpr
+       | print
        | operatorExp
        | assign
        | list
@@ -44,8 +45,15 @@ expr : OPEN_B* (print
        | stringCase
        | merge
        | atom
-       ) CLOSE_B*
+       // omar
+       | complex
+       // end
        ;
+// omar
+balancedExpr : OPEN_B expr CLOSE_B
+             | OPEN_B CLOSE_B
+             ;
+// end
 quoted: SINGLE_QUOTE expr;
 
 read: OPEN_B READ CLOSE_B;
@@ -100,9 +108,10 @@ dolist: DOLIST OPEN_B ID (list | ID) CLOSE_B expr*;
 
 defun: DEFUN ID OPEN_B (ID)* CLOSE_B expr+;
 
-operatorExp: (operator1 expr expr*) #OPERATOR1
-
-             | (operator2 expr)+ #OPERATOR2
+operatorExp: OPEN_B ((operator1 expr expr*)
+             | (operator2 expr)
+             | (operator3 expr expr?))
+             CLOSE_B
              ;
 
 operator1 : ADD
@@ -126,33 +135,78 @@ operator1 : ADD
             | LOGNOR
             | LOGEQV
             | LOGNOT
+            // omar
             | INCF
             | DECF
             | MAX
             | MIN
+            | GCD
+            | LCM
+            // end
             ;
 
-operator2 : FLOOR
-            | CEILING
+operator2 :
+             CEILING
             | ABS
             | NOT
             | ASH
             | LSH
             | SQRT
+            // omar
             | SIN
+            | COS
+            | TAN
+            | ASIN
+            | ACOS
+            | ATAN
+            | SINH
+            | COSH
+            | TANH
+            | ATANH
+            | ASINH
+            | ACOSH
+            | EXP
+            | LOG
+            | RATIONAL
+            | RATIONALIZE
+            | DENOMINATOR
+            | NUMERATOR
+            | IMAGPART
+            | REALPART
+            // end
             ;
-
+// omar
+operator3: CONJUGATE
+           | ISQRT
+           | FLOOR
+           | FFLOOR
+           | ROUND
+           | TRUNCATE
+           | FTRUNCATE
+           | FROUND
+;
+// end
 atom: NUMBER
      | STRING
      | ID
      | quoted
+     // omar
+     | float
+     | complexShape
+     // end
      | NIL
      | DOT
      ;
-
+// omar
+float : FLOAT NUMBER;
+// end
 let: LET OPEN_B (OPEN_B ID expr* CLOSE_B)* CLOSE_B expr+;
 consExpr: CONS expr expr;
 
+// omar
+complexShape: HASHC OPEN_B NUMBER NUMBER CLOSE_B;
+complex: OPEN_B COMPLEX (NUMBER | float | operatorExp) (NUMBER | float | operatorExp)? CLOSE_B;
+// end
 operatorList: CAR expr
             | CDR expr
             | APPEND expr (expr)*

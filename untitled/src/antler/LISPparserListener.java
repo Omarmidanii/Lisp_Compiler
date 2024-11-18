@@ -48,6 +48,16 @@ public interface LISPparserListener extends ParseTreeListener {
 	 */
 	void exitExpr(LISPparser.ExprContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link LISPparser#balancedExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterBalancedExpr(LISPparser.BalancedExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LISPparser#balancedExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitBalancedExpr(LISPparser.BalancedExprContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link LISPparser#quoted}.
 	 * @param ctx the parse tree
 	 */
@@ -298,29 +308,15 @@ public interface LISPparserListener extends ParseTreeListener {
 	 */
 	void exitDefun(LISPparser.DefunContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code OPERATOR1}
-	 * labeled alternative in {@link LISPparser#operatorExp}.
+	 * Enter a parse tree produced by {@link LISPparser#operatorExp}.
 	 * @param ctx the parse tree
 	 */
-	void enterOPERATOR1(LISPparser.OPERATOR1Context ctx);
+	void enterOperatorExp(LISPparser.OperatorExpContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code OPERATOR1}
-	 * labeled alternative in {@link LISPparser#operatorExp}.
+	 * Exit a parse tree produced by {@link LISPparser#operatorExp}.
 	 * @param ctx the parse tree
 	 */
-	void exitOPERATOR1(LISPparser.OPERATOR1Context ctx);
-	/**
-	 * Enter a parse tree produced by the {@code OPERATOR2}
-	 * labeled alternative in {@link LISPparser#operatorExp}.
-	 * @param ctx the parse tree
-	 */
-	void enterOPERATOR2(LISPparser.OPERATOR2Context ctx);
-	/**
-	 * Exit a parse tree produced by the {@code OPERATOR2}
-	 * labeled alternative in {@link LISPparser#operatorExp}.
-	 * @param ctx the parse tree
-	 */
-	void exitOPERATOR2(LISPparser.OPERATOR2Context ctx);
+	void exitOperatorExp(LISPparser.OperatorExpContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LISPparser#operator1}.
 	 * @param ctx the parse tree
@@ -342,6 +338,16 @@ public interface LISPparserListener extends ParseTreeListener {
 	 */
 	void exitOperator2(LISPparser.Operator2Context ctx);
 	/**
+	 * Enter a parse tree produced by {@link LISPparser#operator3}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperator3(LISPparser.Operator3Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link LISPparser#operator3}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperator3(LISPparser.Operator3Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link LISPparser#atom}.
 	 * @param ctx the parse tree
 	 */
@@ -351,6 +357,16 @@ public interface LISPparserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAtom(LISPparser.AtomContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LISPparser#float}.
+	 * @param ctx the parse tree
+	 */
+	void enterFloat(LISPparser.FloatContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LISPparser#float}.
+	 * @param ctx the parse tree
+	 */
+	void exitFloat(LISPparser.FloatContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LISPparser#let}.
 	 * @param ctx the parse tree
@@ -371,6 +387,26 @@ public interface LISPparserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitConsExpr(LISPparser.ConsExprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LISPparser#complexShape}.
+	 * @param ctx the parse tree
+	 */
+	void enterComplexShape(LISPparser.ComplexShapeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LISPparser#complexShape}.
+	 * @param ctx the parse tree
+	 */
+	void exitComplexShape(LISPparser.ComplexShapeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LISPparser#complex}.
+	 * @param ctx the parse tree
+	 */
+	void enterComplex(LISPparser.ComplexContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LISPparser#complex}.
+	 * @param ctx the parse tree
+	 */
+	void exitComplex(LISPparser.ComplexContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LISPparser#operatorList}.
 	 * @param ctx the parse tree

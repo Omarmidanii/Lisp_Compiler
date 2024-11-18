@@ -35,6 +35,12 @@ public interface LISPparserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpr(LISPparser.ExprContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LISPparser#balancedExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBalancedExpr(LISPparser.BalancedExprContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link LISPparser#quoted}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -185,19 +191,11 @@ public interface LISPparserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDefun(LISPparser.DefunContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code OPERATOR1}
-	 * labeled alternative in {@link LISPparser#operatorExp}.
+	 * Visit a parse tree produced by {@link LISPparser#operatorExp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOPERATOR1(LISPparser.OPERATOR1Context ctx);
-	/**
-	 * Visit a parse tree produced by the {@code OPERATOR2}
-	 * labeled alternative in {@link LISPparser#operatorExp}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitOPERATOR2(LISPparser.OPERATOR2Context ctx);
+	T visitOperatorExp(LISPparser.OperatorExpContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LISPparser#operator1}.
 	 * @param ctx the parse tree
@@ -211,11 +209,23 @@ public interface LISPparserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitOperator2(LISPparser.Operator2Context ctx);
 	/**
+	 * Visit a parse tree produced by {@link LISPparser#operator3}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOperator3(LISPparser.Operator3Context ctx);
+	/**
 	 * Visit a parse tree produced by {@link LISPparser#atom}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAtom(LISPparser.AtomContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LISPparser#float}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFloat(LISPparser.FloatContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LISPparser#let}.
 	 * @param ctx the parse tree
@@ -228,6 +238,18 @@ public interface LISPparserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitConsExpr(LISPparser.ConsExprContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LISPparser#complexShape}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComplexShape(LISPparser.ComplexShapeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LISPparser#complex}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComplex(LISPparser.ComplexContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LISPparser#operatorList}.
 	 * @param ctx the parse tree

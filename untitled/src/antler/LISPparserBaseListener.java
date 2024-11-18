@@ -65,6 +65,18 @@ public class LISPparserBaseListener implements LISPparserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterBalancedExpr(LISPparser.BalancedExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBalancedExpr(LISPparser.BalancedExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterQuoted(LISPparser.QuotedContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -365,25 +377,13 @@ public class LISPparserBaseListener implements LISPparserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOPERATOR1(LISPparser.OPERATOR1Context ctx) { }
+	@Override public void enterOperatorExp(LISPparser.OperatorExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOPERATOR1(LISPparser.OPERATOR1Context ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterOPERATOR2(LISPparser.OPERATOR2Context ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitOPERATOR2(LISPparser.OPERATOR2Context ctx) { }
+	@Override public void exitOperatorExp(LISPparser.OperatorExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -413,6 +413,18 @@ public class LISPparserBaseListener implements LISPparserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterOperator3(LISPparser.Operator3Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOperator3(LISPparser.Operator3Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAtom(LISPparser.AtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -420,6 +432,18 @@ public class LISPparserBaseListener implements LISPparserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAtom(LISPparser.AtomContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFloat(LISPparser.FloatContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFloat(LISPparser.FloatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -444,6 +468,30 @@ public class LISPparserBaseListener implements LISPparserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitConsExpr(LISPparser.ConsExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComplexShape(LISPparser.ComplexShapeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComplexShape(LISPparser.ComplexShapeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComplex(LISPparser.ComplexContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComplex(LISPparser.ComplexContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
