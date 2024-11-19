@@ -6,7 +6,6 @@ fragment B: [Bb];
 fragment C: [Cc];
 fragment D: [Dd];
 fragment E: [Ee];
-fragment F: [Ff];
 fragment G: [Gg];
 fragment H: [Hh];
 fragment I: [Ii];
@@ -30,6 +29,7 @@ fragment Z: [Zz];
 
 // output & input
 T: [Tt];
+F: [Ff];
 PRINT: P R I N T;
 PRINC: P R I N C;
 WRITE_LINE: W R I T E[-]L I N E;
@@ -37,7 +37,7 @@ WRITE: W R I T E;
 READ: R E A D;
 WS:[ \t]+ -> channel(HIDDEN);
 NEWLINE: [\n\r]+ -> skip;
-SINGLECOMMENT: ';' [a-zA-Z1-9{}()|/\\'`~;:,.*-+_^&$%#@!?>< \\[\]]* -> skip;
+SINGLECOMMENT: ';' [a-zA-Z0-9{}()|/\\'`~;:,.*-+_^&$%#@!?>< \\[\]]* -> skip;
 MULTIECOMMENT: '|#' (.)*? '#|'-> skip;
 SETQ: [Ss][Ee][Tt][Qq];
 OPEN_B: '(';
@@ -53,6 +53,20 @@ DEFPARAMETER: D E F P A R A M E T E R;
 CHAR:'#\\' .;
 CHARKEY:C H A R K E Y;
 STRINGKEY:S T R I N G;
+STRINGKEYOP:S T R I N G (EQUALKEY
+                             | NOTEQUALKEY
+                             | GREATERKEY
+                             | LESSKEY
+                             | NOTGREATERKEY
+                             | NOTLESSKEY
+                             | TRIM
+                             | TRIMLEFT
+                             | TRIMRIGHT);
+STRINGKEYCASE: STRINGKEY  SUBTRACT(
+                | UPCASE
+                | DOWNCASE
+                | CAPITALIZE
+                );
 CONCATENATEKEY:C O N C A T E N A T E;
 UPCASE: U P C A S E;
 DOWNCASE: D O W N C A S E;
@@ -104,7 +118,7 @@ DEFUN: D E F U N;
 
 
 // operators
-EQUALKEY:'='|('-'('e'|'E')('q'|'Q')('u'|'U')('a'|'A')('l'|'L'));
+EQUALKEY:'='|(('e'|'E')('q'|'Q')('u'|'U')('a'|'A')('l'|'L'));
 NOTEQUALKEY:'/='|('-'('n'|'N')('o'|'O')('t'|'T')'-'('e'|'E')('q'|'Q')('u'|'U')('a'|'A')('l'|'L'));
 GREATERKEY:'>'|('-'('g'|'G')('r'|'R')('e'|'E')('a'|'A')('t'|'T')('e'|'E')('r'|'R')('p'|'P'));
 LESSKEY:'<'|('-'('l'|'L')('e'|'E')('s'|'S')('s'|'S')('p'|'P'));

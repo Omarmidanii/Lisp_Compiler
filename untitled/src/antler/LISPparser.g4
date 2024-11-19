@@ -2,7 +2,7 @@ parser grammar LISPparser;
 
 options {tokenVocab=LISPlexer;}
 
-program: ((OPEN_B* (expr)* CLOSE_B*) | comment) EOF
+program: ((OPEN_B (expr)* CLOSE_B) | comment)* EOF
         ;
 
 compair:EQUALKEY
@@ -15,7 +15,7 @@ compair:EQUALKEY
     | TRIMLEFT
     | TRIMRIGHT;
 
-exprString: STRINGKEY compair STRING STRING ;
+exprString: STRINGKEYOP STRING STRING ;
 
 expr : balancedExpr
        | print
@@ -61,11 +61,7 @@ read: OPEN_B READ CLOSE_B;
 comment: SINGLECOMMENT | MULTIECOMMENT;
 
 format: FORMAT (T | STREAM | NIL);
-stringCase: STRINGKEY  SUBTRACT(
-                | UPCASE
-                | DOWNCASE
-                | CAPITALIZE
-                );
+stringCase: STRINGKEYCASE STRING;
 
 chatAtOrsubseq: (CHARKEY | SUBSEQ) STRING NUMBER;
 
